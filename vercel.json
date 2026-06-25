@@ -1,11 +1,13 @@
 {
-  "env": {
-    "GRAPHQL_URL": "https://damno.next.erxes.io/gateway/graphql",
-    "NEXT_PUBLIC_GRAPHQL_URL": "https://damno.next.erxes.io/gateway/graphql",
-    "ERXES_APP_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRQb3J0YWxJZCI6ImtaMDRwYVlSNmh0dXdKWENHRWVjOCIsImlhdCI6MTc4MjIxNTM5Mn0.LBd4utfh3xzpTFqi1s64jn1loW3W_zIXuBAffgaKrZM",
-    "NEXT_PUBLIC_ERXES_APP_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRQb3J0YWxJZCI6ImtaMDRwYVlSNmh0dXdKWENHRWVjOCIsImlhdCI6MTc4MjIxNTM5Mn0.LBd4utfh3xzpTFqi1s64jn1loW3W_zIXuBAffgaKrZM",
-    "NEXT_PUBLIC_ERXES_ENDPOINT": "https://damno.next.erxes.io/gateway/graphql",
-    "ERXES_CMS_ID": "6a3a75a8407ef915c50979f3",
-    "CLIENT_PORTAL_ID": "kZ04paYR6httwJXCGEec8"
+  "build": {
+    "env": {
+      "GRAPHQL_URL": "https://damno.next.erxes.io/gateway/graphql",
+      "NEXT_PUBLIC_GRAPHQL_URL": "https://damno.next.erxes.io/gateway/graphql",
+      "ERXES_APP_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRQb3J0YWxJZCI6ImtaMDRwYVlSNmh0dXdKWENHRWVjOCIsImlhdCI6MTc4MjIxNTM5Mn0.LBd4utfh3xzpTFqi1s64jn1loW3W_zIXuBAffgaKrZM",
+      "NEXT_PUBLIC_ERXES_APP_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRQb3J0YWxJZCI6ImtaMDRwYVlSNmh0dXdKWENHRWVjOCIsImlhdCI6MTc4MjIxNTM5Mn0.LBd4utfh3xzpTFqi1s64jn1loW3W_zIXuBAffgaKrZM",
+      "NEXT_PUBLIC_ERXES_ENDPOINT": "https://damno.next.erxes.io/gateway/graphql",
+      "ERXES_CMS_ID": "6a3a75a8407ef915c50979f3",
+      "CLIENT_PORTAL_ID": "kZ04paYR6httwJXCGEec8"
+    }
   }
 }
