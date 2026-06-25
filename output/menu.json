@@ -1,0 +1,19 @@
+[
+  { "label": "Нүүр", "url": "/", "order": 1, "kind": "header", "translations": [{ "language": "en", "title": "Home" }] },
+  { "label": "Бидний тухай", "url": "/about", "order": 2, "kind": "header", "translations": [{ "language": "en", "title": "About" }] },
+  { "label": "Үйлчилгээ", "url": "/services", "order": 3, "kind": "header", "translations": [{ "language": "en", "title": "Services" }] },
+  { "label": "Үнийн санал", "url": "/pricing", "order": 4, "kind": "header", "translations": [{ "language": "en", "title": "Pricing" }] },
+  { "label": "Портфолио", "url": "/portfolio", "order": 5, "kind": "header", "translations": [{ "language": "en", "title": "Portfolio" }] },
+  { "label": "Мэдээ", "url": "/blog", "order": 6, "kind": "header", "translations": [{ "language": "en", "title": "News" }] },
+  { "label": "Холбоо барих", "url": "/contact", "order": 7, "kind": "header", "translations": [{ "language": "en", "title": "Contact" }] },
+
+  { "label": "Нүүр", "url": "/", "order": 1, "kind": "footer", "translations": [{ "language": "en", "title": "Home" }] },
+  { "label": "Бидний тухай", "url": "/about", "order": 2, "kind": "footer", "translations": [{ "language": "en", "title": "About" }] },
+  { "label": "Үйлчилгээ", "url": "/services", "order": 3, "kind": "footer", "translations": [{ "language": "en", "title": "Services" }] },
+  { "label": "Үнийн санал", "url": "/pricing", "order": 4, "kind": "footer", "translations": [{ "language": "en", "title": "Pricing" }] },
+  { "label": "Портфолио", "url": "/portfolio", "order": 5, "kind": "footer", "translations": [{ "language": "en", "title": "Portfolio" }] },
+  { "label": "Мэдээ", "url": "/blog", "order": 6, "kind": "footer", "translations": [{ "language": "en", "title": "News" }] },
+  { "label": "Холбоо барих", "url": "/contact", "order": 7, "kind": "footer", "translations": [{ "language": "en", "title": "Contact" }] },
+  { "label": "Нууцлалын бодлого", "url": "/privacy", "order": 8, "kind": "footer", "translations": [{ "language": "en", "title": "Privacy" }] },
+  { "label": "Үйлчилгээний нөхцөл", "url": "/terms", "order": 9, "kind": "footer", "translations": [{ "language": "en", "title": "Terms" }] }
+]

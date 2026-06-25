@@ -1,0 +1,53 @@
+{
+  "category": {
+    "name": "Мэдээ, мэдээлэл",
+    "slug": "news",
+    "translations": [
+      { "language": "en", "title": "News", "content": null, "excerpt": null }
+    ]
+  },
+  "posts": [
+    {
+      "title": "Хөрөнгийн үнэлгээний стандартуудын шинэчлэл",
+      "slug": "valuation-standards-update",
+      "excerpt": "Монгол Улсад мөрдөгдөж буй YOVC стандартууд болон олон улсын IVS хөтөлбөрийн шинэчлэлийн талаар танилцуулж байна.",
+      "content": "<p>Хөрөнгийн үнэлгээний салбарт стандартыг дагаж мөрдөх нь мэргэжлийн чанар, итгэлцэлд чухал нөлөөтэй. YOVC-101, YOVC-102, YOVC-103, YOVC-104, YOVC-105 стандартууд нь үнэлгээний үндсэн зарчмуудыг тодорхойлдог.</p><p>Сүүлийн жилүүдэд Монгол Улсад YOVC-200, YOVC-210, YOVC-220, YOVC-230 стандартууд нэвтэрч, суурь хөрөнгө, хөдлөх хөрөнгө, бизнес болон биет бус хөрөнгийн үнэлгээний тусгай журам батлагдлаа.</p>",
+      "translations": [
+        {
+          "language": "en",
+          "title": "Updates in Valuation Standards",
+          "excerpt": "An overview of YOVC standards and IVS updates applied in Mongolia.",
+          "content": "<p>Adherence to standards is critical for quality and trust in the valuation industry. YOVC-101 through YOVC-105 define the fundamental principles of valuation.</p><p>In recent years Mongolia has adopted YOVC-200, YOVC-210, YOVC-220, and YOVC-230, introducing specific rules for real estate, movable assets, business, and intangible asset valuations.</p>"
+        }
+      ]
+    },
+    {
+      "title": "Банкны барьцаа хөрөнгийн үнэлгээний ач холбогдол",
+      "slug": "collateral-valuation-importance",
+      "excerpt": "Банкны зээлдүүлэлтэд барьцаа хөрөнгийн үнэлгээ хэрхэн нөлөөлдөг, ямар үе шатуудаас бүрддэг талаар.",
+      "content": "<p>Банкны барьцаа хөрөнгийн үнэлгээ нь санхүүгийн эрсдэлийг бууруулах, зээл олголтын шийдвэр гаргахад зайлшгүй шаардлагатай үйлчилгээ юм.</p><p>Манай компани хөрөнгийн тодорхойлолт, зах зээлийн судалгаа, харьцуулсан шинжилгээ, эцсийн дүгнэлт гэсэн 3 шатны чанарын хяналтын дагуу үнэлгээ хийдэг.</p>",
+      "translations": [
+        {
+          "language": "en",
+          "title": "The Importance of Collateral Valuation",
+          "excerpt": "How collateral valuation impacts bank lending and what the process includes.",
+          "content": "<p>Collateral valuation is essential to reduce financial risk and support lending decisions.</p><p>Our company performs valuation through a three-stage quality control process: asset identification, market research, comparative analysis, and final reporting.</p>"
+        }
+      ]
+    },
+    {
+      "title": "Автомашин болон машин тоног төхөөрөмжийн үнэлгээ",
+      "slug": "vehicle-machinery-valuation",
+      "excerpt": "Хөдлөх хөрөнгийн үнэлгээнд юу анхаарах вэ? Автомашин, хүнд машин механизм, үйлдвэрийн тоног төхөөрөмжийн үнэлгээний зарчмууд.",
+      "content": "<p>Хөдлөх хөрөнгийн үнэлгээ нь техникийн байдал, насжилт, гүйлт, зах зээлийн эрэлт нийлүүлэлт, засвар үйлчилгээний түүх зэргийг харгалзан үздэг.</p><p>ДАМНО ҮНЭЛГЭЭ нь автомашин, хүнд даацын техник, уул уурхайн тоног төхөөрөмж, үйлдвэрийн шугамын багаж хэрэгслийг YOVC-210 стандартаар үнэлдэг.</p>",
+      "translations": [
+        {
+          "language": "en",
+          "title": "Vehicle and Machinery Valuation",
+          "excerpt": "What to consider when valuing movable assets such as vehicles, heavy machinery, and industrial equipment.",
+          "content": "<p>Movable asset valuation considers technical condition, age, mileage, market supply and demand, and service history.</p><p>Damno Valuation values automobiles, heavy machinery, mining equipment, and industrial tools under YOVC-210 standards.</p>"
+        }
+      ]
+    }
+  ]
+}

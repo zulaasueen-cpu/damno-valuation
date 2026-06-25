@@ -1,0 +1,157 @@
+
+> erxes-web-starter@0.1.0 dev C:\Users\pc\OneDrive\Documents\opencode\content-plugin\headless\web\output\damno-valuation
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.55.242:3000
+- Environments: .env.local
+✓ Ready in 1274ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\pc\OneDrive\Documents\opencode\content-plugin\headless\web\pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\pc\OneDrive\Documents\opencode\content-plugin\headless\web\output\damno-valuation\pnpm-workspace.yaml
+
+
+○ Compiling /[locale] ...
+ GET /mn 200 in 9.4s (next.js: 7.5s, proxy.ts: 407ms, generate-params: 1197ms, application-code: 1461ms)
+ GET /mn 200 in 346ms (next.js: 132ms, proxy.ts: 15ms, generate-params: 114ms, application-code: 199ms)
+[browser] Image with src "/logo-mn.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[browser] Image with src "/office-1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/office-2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/office-3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/office-1.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET /mn 200 in 468ms (next.js: 120ms, proxy.ts: 15ms, generate-params: 105ms, application-code: 333ms)
+[browser] Image with src "/logo-mn.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[browser] Image with src "/office-1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/office-2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Image with src "/office-3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+⨯ ./output/damno-valuation/src/components/layout/Header.tsx:4:1
+Module not found: Can't resolve './LanguageSwitcher'
+  [90m2 |[0m [36mimport[0m { [33mLink[0m } [36mfrom[0m [32m"@/i18n/routing"[0m;
+  [90m3 |[0m [36mimport[0m [33mImage[0m [36mfrom[0m [32m"@/components/common/Image"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mLanguageSwitcher[0m } [36mfrom[0m [32m"./LanguageSwitcher"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mMobileMenu[0m } [36mfrom[0m [32m"./MobileMenu"[0m;
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mHeaderProps[0m {
+
+
+
+Import trace:
+  Server Component:
+    ./output/damno-valuation/src/components/layout/Header.tsx
+    ./output/damno-valuation/src/app/[locale]/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./output/damno-valuation/src/components/layout/Header.tsx:4:1
+Module not found: Can't resolve './LanguageSwitcher'
+  [90m2 |[0m [36mimport[0m { [33mLink[0m } [36mfrom[0m [32m"@/i18n/routing"[0m;
+  [90m3 |[0m [36mimport[0m [33mImage[0m [36mfrom[0m [32m"@/components/common/Image"[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m { [33mLanguageSwitcher[0m } [36mfrom[0m [32m"./LanguageSwitcher"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m { [33mMobileMenu[0m } [36mfrom[0m [32m"./MobileMenu"[0m;
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mHeaderProps[0m {
+
+
+
+Import trace:
+  Server Component:
+    ./output/damno-valuation/src/components/layout/Header.tsx
+    ./output/damno-valuation/src/app/[locale]/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./output/damno-valuation/src/components/layout/Header.tsx:5:1
+Module not found: Can't resolve './MobileMenu'
+  [90m3 |[0m [36mimport[0m [33mImage[0m [36mfrom[0m [32m"@/components/common/Image"[0m;
+  [90m4 |[0m [36mimport[0m { [33mLanguageSwitcher[0m } [36mfrom[0m [32m"./LanguageSwitcher"[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mMobileMenu[0m } [36mfrom[0m [32m"./MobileMenu"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mHeaderProps[0m {
+  [90m8 |[0m   locale: string;
+
+
+
+Import trace:
+  Server Component:
+    ./output/damno-valuation/src/components/layout/Header.tsx
+    ./output/damno-valuation/src/app/[locale]/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./output/damno-valuation/src/components/layout/Header.tsx:5:1
+Module not found: Can't resolve './MobileMenu'
+  [90m3 |[0m [36mimport[0m [33mImage[0m [36mfrom[0m [32m"@/components/common/Image"[0m;
+  [90m4 |[0m [36mimport[0m { [33mLanguageSwitcher[0m } [36mfrom[0m [32m"./LanguageSwitcher"[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mMobileMenu[0m } [36mfrom[0m [32m"./MobileMenu"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mHeaderProps[0m {
+  [90m8 |[0m   locale: string;
+
+
+
+Import trace:
+  Server Component:
+    ./output/damno-valuation/src/components/layout/Header.tsx
+    ./output/damno-valuation/src/app/[locale]/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./output/damno-valuation/src/components/layout/Header.tsx:5:1
+Module not found: Can't resolve './MobileMenu'
+  [90m3 |[0m [36mimport[0m [33mImage[0m [36mfrom[0m [32m"@/components/common/Image"[0m;
+  [90m4 |[0m [36mimport[0m { [33mLanguageSwitcher[0m } [36mfrom[0m [32m"./LanguageSwitcher"[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mMobileMenu[0m } [36mfrom[0m [32m"./MobileMenu"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mHeaderProps[0m {
+  [90m8 |[0m   locale: string;
+
+
+
+Import trace:
+  Server Component:
+    ./output/damno-valuation/src/components/layout/Header.tsx
+    ./output/damno-valuation/src/app/[locale]/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./output/damno-valuation/src/components/layout/Header.tsx:5:1
+Module not found: Can't resolve './MobileMenu'
+  [90m3 |[0m [36mimport[0m [33mImage[0m [36mfrom[0m [32m"@/components/common/Image"[0m;
+  [90m4 |[0m [36mimport[0m { [33mLanguageSwitcher[0m } [36mfrom[0m [32m"./LanguageSwitcher"[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { [33mMobileMenu[0m } [36mfrom[0m [32m"./MobileMenu"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36minterface[0m [33mHeaderProps[0m {
+  [90m8 |[0m   locale: string;
+
+
+
+Import trace:
+  Server Component:
+    ./output/damno-valuation/src/components/layout/Header.tsx
+    ./output/damno-valuation/src/app/[locale]/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Compiled in 370ms
+✓ Compiled in 235ms
+✓ Compiled in 834ms
+✓ Compiled in 260ms

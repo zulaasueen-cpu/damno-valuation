@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "pricing": "Pricing",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "order": "Get a Quote",
+    "consult": "Free Consultation"
+  },
+  "hero": {
+    "badge": "Since 2008",
+    "title": "Expert Asset Valuation Solutions",
+    "subtitle": "Damno Valuation LLC provides property, business, collateral, and loss assessment services in compliance with Mongolian law and YOVC/IVS standards through a team of 35 specialists.",
+    "ctaPrimary": "Get a Quote",
+    "ctaSecondary": "Consult Now"
+  },
+  "about": {
+    "label": "About Us",
+    "title": "A valuation firm built on trust",
+    "description": "Licensed by the Ministry of Finance on November 28, 2023 (No. 140600033, unlimited term), Damno Valuation delivers practical, evidence-based valuations with a three-stage quality control process and professional liability insurance from Practical Insurance LLC.",
+    "stats": {
+      "employees": "35+ specialists",
+      "experience": "15+ years experience",
+      "projects": "120+ major projects",
+      "valuations": "5000+ valuations done"
+    }
+  },
+  "services": {
+    "label": "Services",
+    "title": "Full-spectrum asset valuation",
+    "more": "Learn more"
+  },
+  "service": [
+    {
+      "title": "Residential Property Valuation",
+      "description": "Valuation of apartments, houses, land, and buildings in Ulaanbaatar and provincial regions."
+    },
+    {
+      "title": "Movable Assets & Machinery",
+      "description": "Professional valuation of vehicles, mining equipment, industrial lines, and other movable assets."
+    },
+    {
+      "title": "Business & Intangible Assets",
+      "description": "Company valuation, shares, financial instruments, brands, licenses, patents, and intangible assets."
+    },
+    {
+      "title": "Bank Collateral Valuation",
+      "description": "Collateral valuation accepted by Khan Bank, State Bank, Trade and Development Bank, and other lenders."
+    },
+    {
+      "title": "Loss Assessment & Legal Expertise",
+      "description": "Asset loss assessment and expert reports for police, courts, customs, and tax authorities."
+    },
+    {
+      "title": "Land & Real Estate Valuation",
+      "description": "Valuation of land, factories, offices, warehouses, retail spaces, and mining facilities."
+    }
+  ],
+  "portfolio": {
+    "label": "Portfolio",
+    "title": "Our work",
+    "clients": "Key clients"
+  },
+  "blog": {
+    "title": "News & Insights",
+    "description": "Latest news, insights, and updates from the asset valuation industry."
+  },
+  "pricing": {
+    "label": "Pricing",
+    "description": "Asset valuation service pricing and packages."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "back": "Back to home"
+  },
+  "office": {
+    "label": "Inside Damno",
+    "title": "Our office",
+    "description": "Take a look at Damno Valuation's working environment, team, and documentation standards."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Need a valuation consultation?",
+    "description": "Connect with our specialists to get a tailored solution for your asset valuation needs.",
+    "ctaPrimary": "Get a Quote",
+    "ctaSecondary": "Consult Now",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "name@example.com",
+    "phonePlaceholder": "+976 9900 0000",
+    "messagePlaceholder": "What type of valuation do you need?",
+    "submit": "Send",
+    "submitted": "Sent"
+  },
+  "footer": {
+    "rights": "All rights reserved. Damno Valuation LLC",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}

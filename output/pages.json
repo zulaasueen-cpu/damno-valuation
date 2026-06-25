@@ -1,0 +1,114 @@
+[
+  {
+    "section": "home",
+    "name": "Нүүр",
+    "slug": "home",
+    "description": "ДАМНО ҮНЭЛГЭЭ — Хөрөнгийн үнэлгээний мэргэшсэн шийдэл",
+    "content": "<p>ДАМНО ҮНЭЛГЭЭ нь Монгол Улсын Хөрөнгийн үнэлгээний тухай хууль, YOVC, НБОУС, STOУС стандартаар үндэслэн 35 мэргэшсэн мэргэжилтний хүчэөр хөрөнгийн үнэлгээ, банкны барьцаа, бизнесийн үнэлгээ, хохирол тогтоолгооны үйлчилгээг үзүүлж байна.</p>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "Home",
+        "content": "<p>Damno Valuation provides asset valuation, bank collateral valuation, business valuation, and loss assessment services in compliance with Mongolian law and YOVC/IVS standards through a team of 35 specialists.</p>"
+      }
+    ]
+  },
+  {
+    "section": "about",
+    "name": "Бидний тухай",
+    "slug": "about",
+    "description": "Итгэлцэлд суурилсан үнэлгээний байгууллага",
+    "content": "<p>ДАМНО ҮНЭЛГЭЭ ХХК нь Сангийн яамнаас 2023 оны 11 дүгээр сарын 28-ны өдөр тусгай зөвшөөрөл авсан №140600033 дугаартай, хугацаагүй эрхтэй үнэлгээний компани юм. Бид өдөр тутмын практик туршлага дээр суурилсан бодит үнэлгээ, 3 шатны чанарын хяналт, Практикал Даатгал ХХК-ийн мэргэжлийн хариуцлагын даатгалтайгаар үйлчилгээ үзүүлдэг.</p><p>Манай баг 1 тэргүүлэх үнэлгээчин, 2 хугацаагүй эрхтэй үнэлгээчин, 1 үнэлгээчин, 4 гэрчилгээтэй үнэлгээчин, 2 тесовчны удирдагч, аудитор, санхүүчийн шинжээч, барилгын инженер, механик инженер, эрүүл ахуйн инженер, иргэний инженер, дүүдлах альбан татварлагч, 20 бие төлөөлөгч зэрэг нийт 35 ажилтантай.</p>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "About Us",
+        "content": "<p>Damno Valuation LLC is licensed by the Ministry of Finance on November 28, 2023 (No. 140600033, unlimited term). We deliver practical, evidence-based valuations with a three-stage quality control process and professional liability insurance from Practical Insurance LLC.</p><p>Our team includes 35 specialists: lead appraisers, certified appraisers, auditors, finance experts, civil and mechanical engineers, and field representatives.</p>"
+      }
+    ]
+  },
+  {
+    "section": "services",
+    "name": "Үйлчилгээ",
+    "slug": "services",
+    "description": "Бүх төрлийн хөрөнгийн үнэлгээ",
+    "content": "<h2>Үйлчилгээний чиглэл</h2><ul><li>Орон сууц, амины сууцны үнэлгээ</li><li>Хөдлөх хөрөнгө, машин тоног төхөөрөмж</li><li>Бизнес болон биет бус хөрөнгийн үнэлгээ</li><li>Банкны барьцаа хөрөнгийн үнэлгээ</li><li>Хохирол тогтоолгоо, шүүхэд итгэмжлэл</li><li>Газар, үл хөдлөх хөрөнгийн үнэлгээ</li></ul><p>Бид YOVC-101, YOVC-102, YOVC-103, YOVC-104, YOVC-105, YOVC-200, YOVC-210, YOVC-220, YOVC-230, YOVC-300, YOVC-400, YOVC-410, YOVC-500 стандартуудаар ажилладаг.</p>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "Services",
+        "content": "<h2>Our Services</h2><ul><li>Residential Property Valuation</li><li>Movable Assets &amp; Machinery</li><li>Business &amp; Intangible Assets</li><li>Bank Collateral Valuation</li><li>Loss Assessment &amp; Legal Expertise</li><li>Land &amp; Real Estate Valuation</li></ul><p>We work under YOVC-101 through YOVC-500 standards.</p>"
+      }
+    ]
+  },
+  {
+    "section": "pricing",
+    "name": "Үнийн санал",
+    "slug": "pricing",
+    "description": "Хөрөнгийн үнэлгээний үнийн санал",
+    "content": "<p>Үнийн санал нь хөрөнгийн төрөл, байршил, хэмжээ, нарийн байдлаас хамаарч өөрчлөгдөнө. Та манай мэргэжилтнүүдтэй холбогдож, өөрийн хэрэгцээнд тохирсон үнийн санал аваарай.</p><h3>Хувь хүн</h3><p>Орон сууц, амины сууц, автомашин зэрэг хөрөнгийн үнэлгээ.</p><h3>Бизнес</h3><p>Байгууллагын хөрөнгө, барьцаа хөрөнгө, бизнесийн үнэлгээ.</p><h3>Төрийн байгууллага</h3><p>Төсөл хөтөлбөр, хохирол тогтоолгоо, шүүхийн итгэмжлэл.</p>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "Pricing",
+        "content": "<p>Pricing depends on asset type, location, size, and complexity. Contact our specialists for a tailored quote.</p><h3>Personal</h3><p>Apartments, houses, vehicles.</p><h3>Business</h3><p>Corporate assets, collateral, business valuation.</p><h3>Government</h3><p>Project valuation, loss assessment, court expertise.</p>"
+      }
+    ]
+  },
+  {
+    "section": "portfolio",
+    "name": "Портфолио",
+    "slug": "portfolio",
+    "description": "Бидний гүйцэтгэсэн ажлууд",
+    "content": "<p>ДАМНО ҮНЭЛГЭЭ нь олон улсын болон дотоодын томоохон компаниудтай хамтран ажиллаж, 5000 гаруй үнэлгээ, 120 гаруй томоохон төслийг амжилттай хэрэгжүүлсэн.</p><h2>Томоохон харилцагчид</h2><ul><li>Эрдэнэт Үйлдвэр ТӨХК</li><li>Оюу толгой ХХК</li><li>Рио Тинто Монголна</li><li>MCS International</li><li>Төрийн банк, Хас банк, Ариг банк, ҮХОБ</li><li>Монголын Хөрөнгийн Бирж</li><li>Гоёл Кашмер, Саус Гоби Сэндс</li></ul>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "Portfolio",
+        "content": "<p>Damno Valuation has completed over 5,000 valuations and 120 major projects with leading domestic and international clients.</p><h2>Key Clients</h2><ul><li>Erdenet Mining Corporation</li><li>Oyu Tolgoi LLC</li><li>Rio Tinto Mongolia</li><li>MCS International</li><li>State Bank, Khan Bank, Arig Bank, TDB</li><li>Mongolian Stock Exchange</li><li>Goyo Cashmere, SouthGobi Sands</li></ul>"
+      }
+    ]
+  },
+  {
+    "section": "contact",
+    "name": "Холбоо барих",
+    "slug": "contact",
+    "description": "Хөрөнгийн үнэлгээний зөвлөгөө авах",
+    "content": "<p>Манай мэргэжилтнүүдтэй холбогдож, таны хөрөнгийн үнэлгээний хэрэгцээнд тохирсон шийдэл аваарай. Бид таньд хурдан, найдвартай, мэргэжлийн үйлчилгээ үзүүлэхэд бэлэн.</p>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "Contact",
+        "content": "<p>Connect with our specialists to get a tailored solution for your asset valuation needs. We are ready to provide fast, reliable, and professional service.</p>"
+      }
+    ]
+  },
+  {
+    "section": "privacy",
+    "name": "Нууцлалын бодлого",
+    "slug": "privacy",
+    "description": "ДАМНО ҮНЭЛГЭЭ-ийн нууцлалын бодлого",
+    "content": "<p>ДАМНО ҮНЭЛГЭЭ ХХК нь харилцагчдынхаа мэдээллийн нууцлал, аюулгүй байдлыг чухалчилж, Монгол Улсын холбогдох хууль тогтоомжийн дагуу мэдээлэл цуглуулах, хадгалах, ашиглах журам баримталдаг.</p>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "Privacy Policy",
+        "content": "<p>Damno Valuation LLC prioritizes the confidentiality and security of customer information and complies with relevant Mongolian laws regarding data collection, storage, and use.</p>"
+      }
+    ]
+  },
+  {
+    "section": "terms",
+    "name": "Үйлчилгээний нөхцөл",
+    "slug": "terms",
+    "description": "ДАМНО ҮНЭЛГЭЭ-ийн үйлчилгээний нөхцөл",
+    "content": "<p>ДАМНО ҮНЭЛГЭЭ ХХК-ийн вэб сайтад зочилж, мэдээлэл авах, үйлчилгээ захиалахдаа дараах нөхцлийг хүлээн зөвшөөрч байгаа болно. Бид Монгол Улсын Хөрөнгийн үнэлгээний тухай хууль, YOVC, НБОУС, STOУС стандартаар үйлчилгээ үзүүлнэ.</p>",
+    "translations": [
+      {
+        "language": "en",
+        "title": "Terms of Service",
+        "content": "<p>By visiting the Damno Valuation LLC website and requesting services, you agree to the following terms. We provide services in accordance with Mongolian asset valuation law and YOVC/IVS standards.</p>"
+      }
+    ]
+  }
+]
