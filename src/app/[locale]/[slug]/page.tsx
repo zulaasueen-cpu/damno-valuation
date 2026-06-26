@@ -26,28 +26,36 @@ const CP_PAGE_DETAIL_QUERY = `
 
 export const dynamicParams = true;
 
+// Reserved slugs that have dedicated static pages
+const RESERVED_SLUGS = new Set([
+  "about",
+  "services",
+  "pricing",
+  "portfolio",
+  "contact",
+  "blog",
+  "privacy",
+  "terms",
+]);
+
 export async function generateStaticParams() {
   try {
     const results = await Promise.all(
       routing.locales.map(async (locale) => {
         const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
-        return ((data.cpPages as Array<{ slug?: string }>) ?? []).map((p) => ({
-          locale,
-          slug: p.slug ?? "",
-        }));
+        return ((data.cpPages as Array<{ slug?: string }>) ?? [])
+          .map((p) => ({
+            locale,
+            slug: p.slug ?? "",
+          }))
+          .filter((p) => p.slug && !RESERVED_SLUGS.has(p.slug));
       })
     );
-    return results.flat().filter((p) => p.slug);
+    return results.flat();
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     if (message.includes("Client portal required")) {
-      // During SSG, if token/env is missing, fall back to known CMS slugs.
-      return routing.locales.flatMap((locale) =>
-        ["about", "services", "pricing", "portfolio", "contact", "privacy", "terms"].map((slug) => ({
-          locale,
-          slug,
-        }))
-      );
+      return [];
     }
     throw err;
   }
@@ -59,6 +67,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
+
+  if (RESERVED_SLUGS.has(slug)) {
+    notFound();
+  }
+
   const data = await cmsFetch(CP_PAGE_DETAIL_QUERY, {
     slug,
     language: locale,
@@ -79,6 +92,11 @@ export default async function CmsPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+
+  if (RESERVED_SLUGS.has(slug)) {
+    notFound();
+  }
+
   const data = await cmsFetch(CP_PAGE_DETAIL_QUERY, {
     slug,
     language: locale,
