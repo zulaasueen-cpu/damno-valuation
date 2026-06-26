@@ -14,9 +14,9 @@ export async function Header({ locale }: HeaderProps) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="mx-auto max-w-[1200px] px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-8 h-24 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <Image src={logo} alt="ДАМНО ҮНЭЛГЭЭ" width={200} height={48} className="h-10 w-auto" />
+          <Image src={logo} alt="ДАМНО ҮНЭЛГЭЭ" width={260} height={64} className="h-14 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
