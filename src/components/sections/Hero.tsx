@@ -24,7 +24,7 @@ export function Hero() {
           className="absolute inset-[-5%]"
         >
           <Image
-            src="/damno-cover.png"
+            src="/financial-building.jpg"
             alt="Санхүүгийн шилэн барилга"
             fill
             className="object-cover object-center opacity-40"
