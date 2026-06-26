@@ -10,15 +10,6 @@ export async function getServerApolloClient() {
       headers: {
         "x-app-token": process.env.ERXES_APP_TOKEN ?? "",
       },
-      fetch: (input: RequestInfo | URL, init?: RequestInit) => {
-        return fetch(input, {
-          ...init,
-          headers: {
-            ...init?.headers,
-            "x-app-token": process.env.ERXES_APP_TOKEN ?? "",
-          },
-        });
-      },
       fetchOptions: { cache: "no-store" },
     }),
     cache: new InMemoryCache(),

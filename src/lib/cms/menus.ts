@@ -1,22 +1,45 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
-import { CP_MENUS } from "@/graphql/cms/queries/menu";
+import { cmsFetch } from "@/lib/cms/fetch";
+
+const CP_MENUS_QUERY = `
+  query CpMenus($language: String, $kind: String) {
+    cpMenus(language: $language, kind: $kind) {
+      _id
+      label
+      url
+      order
+      target
+    }
+  }
+`;
 
 export async function getHeaderMenu(locale: string) {
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{ cpMenus?: Array<{ _id: string; label?: string; url?: string; order?: number; target?: string }> }>({
-    query: CP_MENUS,
-    variables: { language: locale, kind: "header" },
-    context: { fetchOptions: { next: { revalidate: 60 } } },
+  const data = await cmsFetch(CP_MENUS_QUERY, {
+    language: locale,
+    kind: "header",
   });
-  return (data?.cpMenus ?? []).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  return (
+    (data.cpMenus as Array<{
+      _id: string;
+      label?: string;
+      url?: string;
+      order?: number;
+      target?: string;
+    }>) ?? []
+  ).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }
 
 export async function getFooterMenu(locale: string) {
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{ cpMenus?: Array<{ _id: string; label?: string; url?: string; order?: number; target?: string }> }>({
-    query: CP_MENUS,
-    variables: { language: locale, kind: "footer" },
-    context: { fetchOptions: { next: { revalidate: 60 } } },
+  const data = await cmsFetch(CP_MENUS_QUERY, {
+    language: locale,
+    kind: "footer",
   });
-  return (data?.cpMenus ?? []).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  return (
+    (data.cpMenus as Array<{
+      _id: string;
+      label?: string;
+      url?: string;
+      order?: number;
+      target?: string;
+    }>) ?? []
+  ).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }

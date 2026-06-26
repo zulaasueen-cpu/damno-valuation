@@ -1,9 +1,20 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
-import { CP_PAGE_DETAIL } from "@/graphql/cms/queries/page";
+import { cmsFetch } from "@/lib/cms/fetch";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { FadeIn } from "@/components/motion/FadeIn";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+
+const CP_PAGE_DETAIL_QUERY = `
+  query CpPageDetail($slug: String!, $language: String) {
+    cpPageDetail(slug: $slug, language: $language) {
+      _id
+      name
+      slug
+      description
+      content
+    }
+  }
+`;
 
 export async function generateMetadata({
   params,
@@ -24,15 +35,13 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{
-    cpPageDetail?: { name?: string; description?: string; content?: string };
-  }>({
-    query: CP_PAGE_DETAIL,
-    variables: { slug: "contact", language: locale },
-    context: { fetchOptions: { next: { revalidate: 60 } } },
+  const data = await cmsFetch(CP_PAGE_DETAIL_QUERY, {
+    slug: "contact",
+    language: locale,
   });
-  const page = data?.cpPageDetail;
+  const page = data.cpPageDetail as
+    | { name?: string; description?: string; content?: string }
+    | undefined;
 
   return (
     <div className="min-h-screen pt-28 pb-20">

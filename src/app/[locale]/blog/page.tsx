@@ -1,9 +1,20 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
-import { CP_POSTS } from "@/graphql/cms/queries/post";
+import { cmsFetch } from "@/lib/cms/fetch";
 import { Link } from "@/i18n/routing";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion/FadeIn";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+
+const CP_POSTS_QUERY = `
+  query CpPosts($language: String, $status: PostStatus, $limit: Int) {
+    cpPosts(language: $language, status: $status, limit: $limit) {
+      _id
+      slug
+      title
+      excerpt
+      publishedDate
+    }
+  }
+`;
 
 export async function generateMetadata({
   params,
@@ -24,19 +35,18 @@ export default async function BlogPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{ cpPosts?: Array<{
+  const data = await cmsFetch(CP_POSTS_QUERY, {
+    language: locale,
+    status: "published",
+    limit: 12,
+  });
+  const posts = (data.cpPosts ?? []) as Array<{
     _id: string;
     slug?: string;
     title?: string;
     excerpt?: string;
     publishedDate?: string;
-  }> }>({
-    query: CP_POSTS,
-    variables: { language: locale, status: "published", limit: 12 },
-    context: { fetchOptions: { next: { revalidate: 60 } } },
-  });
-  const posts = data?.cpPosts ?? [];
+  }>;
 
   return (
     <div className="min-h-screen pt-28 pb-20">
@@ -50,7 +60,9 @@ export default async function BlogPage({
           {posts.map((post) => (
             <StaggerItem key={post._id}>
               <article className="group rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-6 hover:border-primary/60 transition-colors">
-                <p className="text-sm text-muted mb-3">{post.publishedDate ? new Date(post.publishedDate).toLocaleDateString(locale) : ""}</p>
+                <p className="text-sm text-muted mb-3">
+                  {post.publishedDate ? new Date(post.publishedDate).toLocaleDateString(locale) : ""}
+                </p>
                 <h2 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                   <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                 </h2>

@@ -1,10 +1,29 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
-import { CP_POST, CP_POSTS } from "@/graphql/cms/queries/post";
+import { cmsFetch } from "@/lib/cms/fetch";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-type PostSummary = { slug?: string };
+const CP_POSTS_QUERY = `
+  query CpPosts($language: String, $status: PostStatus, $limit: Int) {
+    cpPosts(language: $language, status: $status, limit: $limit) {
+      _id
+      slug
+    }
+  }
+`;
+
+const CP_POST_QUERY = `
+  query CpPost($slug: String, $language: String) {
+    cpPost(slug: $slug, language: $language) {
+      _id
+      title
+      excerpt
+      publishedDate
+      content
+    }
+  }
+`;
+
 type PostDetail = {
   title?: string;
   excerpt?: string;
@@ -15,13 +34,12 @@ type PostDetail = {
 export async function generateStaticParams() {
   const results = await Promise.all(
     routing.locales.map(async (locale) => {
-      const client = await getServerApolloClient();
-      const { data } = await client.query<{ cpPosts?: PostSummary[] }>({
-        query: CP_POSTS,
-        variables: { language: locale, status: "published", limit: 100 },
-        context: { fetchOptions: { next: { revalidate: 60 } } },
+      const data = await cmsFetch(CP_POSTS_QUERY, {
+        language: locale,
+        status: "published",
+        limit: 100,
       });
-      return (data?.cpPosts ?? []).map((p) => ({
+      return ((data.cpPosts as Array<{ slug?: string }>) ?? []).map((p) => ({
         locale,
         slug: p.slug ?? "",
       }));
@@ -36,13 +54,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{ cpPost?: PostDetail }>({
-    query: CP_POST,
-    variables: { slug, language: locale },
-    context: { fetchOptions: { next: { revalidate: 60 } } },
-  });
-  const post = data?.cpPost;
+  const data = await cmsFetch(CP_POST_QUERY, { slug, language: locale });
+  const post = data.cpPost as PostDetail | undefined;
   if (!post) return {};
   return {
     title: `${post.title} | ДАМНО ҮНЭЛГЭЭ`,
@@ -56,14 +69,9 @@ export default async function PostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{ cpPost?: PostDetail }>({
-    query: CP_POST,
-    variables: { slug, language: locale },
-    context: { fetchOptions: { next: { revalidate: 60 } } },
-  });
-  if (!data?.cpPost) notFound();
-  const post = data.cpPost;
+  const data = await cmsFetch(CP_POST_QUERY, { slug, language: locale });
+  const post = data.cpPost as PostDetail | undefined;
+  if (!post) notFound();
 
   return (
     <article className="min-h-screen pt-28 pb-20">

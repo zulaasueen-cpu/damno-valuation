@@ -27,12 +27,7 @@ const CP_PAGE_DETAIL_QUERY = `
 export async function generateStaticParams() {
   const results = await Promise.all(
     routing.locales.map(async (locale) => {
-      console.log(`[generateStaticParams ${locale}] calling cpPages...`);
       const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
-      console.log(
-        `[generateStaticParams ${locale}] result:`,
-        (data.cpPages as Array<{ slug?: string }>)?.length
-      );
       return ((data.cpPages as Array<{ slug?: string }>) ?? []).map((p) => ({
         locale,
         slug: p.slug ?? "",

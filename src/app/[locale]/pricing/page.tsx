@@ -1,8 +1,19 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
-import { CP_PAGE_DETAIL } from "@/graphql/cms/queries/page";
+import { cmsFetch } from "@/lib/cms/fetch";
 import { FadeIn } from "@/components/motion/FadeIn";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+
+const CP_PAGE_DETAIL_QUERY = `
+  query CpPageDetail($slug: String!, $language: String) {
+    cpPageDetail(slug: $slug, language: $language) {
+      _id
+      name
+      slug
+      description
+      content
+    }
+  }
+`;
 
 export async function generateMetadata({
   params,
@@ -23,15 +34,13 @@ export default async function PricingPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{
-    cpPageDetail?: { name?: string; description?: string; content?: string };
-  }>({
-    query: CP_PAGE_DETAIL,
-    variables: { slug: "pricing", language: locale },
-    context: { fetchOptions: { next: { revalidate: 60 } } },
+  const data = await cmsFetch(CP_PAGE_DETAIL_QUERY, {
+    slug: "pricing",
+    language: locale,
   });
-  const page = data?.cpPageDetail;
+  const page = data.cpPageDetail as
+    | { name?: string; description?: string; content?: string }
+    | undefined;
 
   return (
     <div className="min-h-screen pt-28 pb-20">
@@ -39,7 +48,9 @@ export default async function PricingPage({
         <FadeIn className="text-center mb-16">
           <span className="text-primary font-semibold tracking-wide">{page?.name ?? "Үнийн санал"}</span>
           <h1 className="mt-4 text-4xl md:text-5xl font-bold">{page?.name ?? "Үнийн санал"}</h1>
-          {page?.description && <p className="mt-4 text-muted max-w-2xl mx-auto">{page.description}</p>}
+          {page?.description && (
+            <p className="mt-4 text-muted max-w-2xl mx-auto">{page.description}</p>
+          )}
         </FadeIn>
 
         {page?.content && (
