@@ -9,11 +9,7 @@ export async function getServerApolloClient() {
         "/graphql",
       headers: {
         "x-app-token": process.env.ERXES_APP_TOKEN ?? "",
-      },
-      fetch: (input: RequestInfo | URL, init?: RequestInit) => {
-        const req = new Request(input, init);
-        console.log("[apollo fetch]", req.url, "headers:", JSON.stringify(Object.fromEntries(req.headers.entries())));
-        return fetch(input, init);
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
       fetchOptions: { cache: "no-store" },
     }),
