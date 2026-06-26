@@ -9,7 +9,15 @@ export async function getServerApolloClient() {
         "/graphql",
       headers: {
         "x-app-token": process.env.ERXES_APP_TOKEN ?? "",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      },
+      fetch: (input: RequestInfo | URL, init?: RequestInit) => {
+        return fetch(input, {
+          ...init,
+          headers: {
+            ...init?.headers,
+            "x-app-token": process.env.ERXES_APP_TOKEN ?? "",
+          },
+        });
       },
       fetchOptions: { cache: "no-store" },
     }),
