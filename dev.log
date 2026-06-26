@@ -155,3 +155,4 @@ https://nextjs.org/docs/messages/module-not-found
 ✓ Compiled in 235ms
 ✓ Compiled in 834ms
 ✓ Compiled in 260ms
+  Reload env: .env.local
