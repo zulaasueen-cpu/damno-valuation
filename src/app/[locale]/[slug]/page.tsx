@@ -8,14 +8,20 @@ export async function generateStaticParams() {
   const results = await Promise.all(
     routing.locales.map(async (locale) => {
       const client = await getServerApolloClient();
-      const { data } = await client.query<{
+      console.log(`[generateStaticParams ${locale}] calling cpPages...`);
+      const result = await client.query<{
         cpPages?: Array<{ slug?: string }>;
       }>({
         query: CP_PAGES,
         variables: { language: locale },
         context: { fetchOptions: { next: { revalidate: 60 } } },
       });
-      return (data?.cpPages ?? []).map((p) => ({
+      console.log(
+        `[generateStaticParams ${locale}] result:`,
+        result.data?.cpPages?.length,
+        (result.error as { message?: string } | undefined)?.message
+      );
+      return (result.data?.cpPages ?? []).map((p) => ({
         locale,
         slug: p.slug ?? "",
       }));
