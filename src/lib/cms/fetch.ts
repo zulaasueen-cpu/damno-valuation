@@ -5,15 +5,25 @@ const ENDPOINT =
   process.env.NEXT_PUBLIC_ERXES_ENDPOINT ??
   "/graphql";
 
-const TOKEN =
-  process.env.ERXES_APP_TOKEN ?? process.env.NEXT_PUBLIC_ERXES_APP_TOKEN ?? "";
-
 export async function cmsFetch(query: string, variables?: Record<string, unknown>) {
+  const token =
+    process.env.ERXES_APP_TOKEN ?? process.env.NEXT_PUBLIC_ERXES_APP_TOKEN ?? "";
+  const clientPortalId =
+    process.env.CLIENT_PORTAL_ID ?? process.env.NEXT_PUBLIC_CLIENT_PORTAL_ID ?? "";
+
+  if (!ENDPOINT || ENDPOINT === "/graphql") {
+    throw new Error("CMS endpoint is not configured");
+  }
+  if (!token) {
+    throw new Error("ERXES_APP_TOKEN is not configured");
+  }
+
   const res = await fetch(ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-app-token": TOKEN,
+      "x-app-token": token,
+      ...(clientPortalId ? { "x-client-portal-id": clientPortalId } : {}),
     },
     body: JSON.stringify({ query, variables }),
     cache: "no-store",

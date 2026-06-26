@@ -24,17 +24,33 @@ const CP_PAGE_DETAIL_QUERY = `
   }
 `;
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  const results = await Promise.all(
-    routing.locales.map(async (locale) => {
-      const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
-      return ((data.cpPages as Array<{ slug?: string }>) ?? []).map((p) => ({
-        locale,
-        slug: p.slug ?? "",
-      }));
-    })
-  );
-  return results.flat().filter((p) => p.slug);
+  try {
+    const results = await Promise.all(
+      routing.locales.map(async (locale) => {
+        const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
+        return ((data.cpPages as Array<{ slug?: string }>) ?? []).map((p) => ({
+          locale,
+          slug: p.slug ?? "",
+        }));
+      })
+    );
+    return results.flat().filter((p) => p.slug);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (message.includes("Client portal required")) {
+      // During SSG, if token/env is missing, fall back to known CMS slugs.
+      return routing.locales.flatMap((locale) =>
+        ["about", "services", "pricing", "portfolio", "contact", "privacy", "terms"].map((slug) => ({
+          locale,
+          slug,
+        }))
+      );
+    }
+    throw err;
+  }
 }
 
 export async function generateMetadata({
