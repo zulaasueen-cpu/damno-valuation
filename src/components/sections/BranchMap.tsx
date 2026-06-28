@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { MapPin } from "lucide-react";
+import { MapPin, Building2, MapPinned } from "lucide-react";
 import { useState } from "react";
 import Image from "@/components/common/Image";
 
@@ -24,6 +24,28 @@ const BRANCHES = [
   { key: "darkhan", lat: 49.46, lon: 105.97 },
   { key: "moron", lat: 49.64, lon: 100.15 },
   { key: "ulaanbaatar", lat: 47.92, lon: 106.91 },
+];
+
+const UB_DISTRICT_KEYS = [
+  "sukhbaatar",
+  "bayanzurkh",
+  "bayangol",
+  "khanuul",
+  "chingeltei",
+  "songinokhairkhan",
+];
+
+const PROVINCE_KEYS = [
+  "chinggis",
+  "choibalsan",
+  "khanbogd",
+  "zamynuud",
+  "kharkhorin",
+  "tsenher",
+  "khovd",
+  "olgii",
+  "darkhan",
+  "moron",
 ];
 
 function project(lon: number, lat: number) {
@@ -94,6 +116,38 @@ export function BranchMap() {
               </button>
             );
           })}
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-xl border border-border bg-background/90 p-4 backdrop-blur-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <Building2 className="h-4 w-4 text-primary" />
+              <span className="text-sm font-semibold">{t("cityHeading")}</span>
+            </div>
+            <ul className="space-y-1.5">
+              {UB_DISTRICT_KEYS.map((key) => (
+                <li key={key} className="text-sm text-muted-foreground flex items-start gap-2">
+                  <span className="inline-block w-1 h-1 rounded-full bg-primary mt-2" />
+                  {t(`districts.${key}`)}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-xl border border-border bg-background/90 p-4 backdrop-blur-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <MapPinned className="h-4 w-4 text-primary" />
+              <span className="text-sm font-semibold">{t("provinceHeading")}</span>
+            </div>
+            <ul className="space-y-1.5">
+              {PROVINCE_KEYS.map((key) => (
+                <li key={key} className="text-sm text-muted-foreground flex items-start gap-2">
+                  <span className="inline-block w-1 h-1 rounded-full bg-primary mt-2" />
+                  {t(key)}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="mt-4 rounded-xl border border-border bg-background/90 p-4 backdrop-blur-sm">

@@ -72,6 +72,16 @@
     "title": "Our Branches",
     "legend": "Branch locations",
     "description": "Representatives in Ulaanbaatar and more than 10 provinces and soums.",
+    "cityHeading": "Ulaanbaatar city",
+    "provinceHeading": "Provinces",
+    "districts": {
+      "sukhbaatar": "Sukhbaatar district",
+      "bayanzurkh": "Bayanzurkh district",
+      "bayangol": "Bayangol district",
+      "khanuul": "Khan-Uul district",
+      "chingeltei": "Chingeltei district",
+      "songinokhairkhan": "Songinokhairkhan district"
+    },
     "ulaanbaatar": "Ulaanbaatar (6 districts)",
     "chinggis": "Khentii, Chinggis city",
     "choibalsan": "Dornod, Choibalsan city",
