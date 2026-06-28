@@ -3,16 +3,13 @@
 import { useTranslations } from "next-intl";
 import { MapPin } from "lucide-react";
 import { useState } from "react";
+import Image from "@/components/common/Image";
 
-const PRIMARY = "#ff6b4a";
-const BORDER = "rgba(255, 107, 74, 0.35)";
-const BG_GLOW = "rgba(255, 107, 74, 0.1)";
-
-const BOUNDS = {
-  minLon: 87.5,
-  maxLon: 119.9,
-  minLat: 41.5,
-  maxLat: 52.1,
+const MAP_BOUNDS = {
+  minLon: 87.4,
+  maxLon: 120.5,
+  minLat: 41.3,
+  maxLat: 52.5,
 };
 
 const BRANCHES = [
@@ -29,9 +26,15 @@ const BRANCHES = [
   { key: "ulaanbaatar", lat: 47.92, lon: 106.91 },
 ];
 
-function project(lon: number, lat: number, width: number, height: number) {
-  const x = ((lon - BOUNDS.minLon) / (BOUNDS.maxLon - BOUNDS.minLon)) * width;
-  const y = height - ((lat - BOUNDS.minLat) / (BOUNDS.maxLat - BOUNDS.minLat)) * height;
+function project(lon: number, lat: number) {
+  const x =
+    ((lon - MAP_BOUNDS.minLon) /
+      (MAP_BOUNDS.maxLon - MAP_BOUNDS.minLon)) *
+    100;
+  const y =
+    ((MAP_BOUNDS.maxLat - lat) /
+      (MAP_BOUNDS.maxLat - MAP_BOUNDS.minLat)) *
+    100;
   return { x, y };
 }
 
@@ -43,99 +46,62 @@ export function BranchMap() {
     <div className="w-full">
       <h2 className="text-2xl md:text-3xl font-bold mb-6">{t("title")}</h2>
       <div className="rounded-2xl border border-border bg-card/50 p-4 md:p-6 overflow-hidden">
-        <div className="relative w-full aspect-[4/3] md:aspect-[16/10]">
-          <svg
-            viewBox="0 0 800 520"
-            className="w-full h-full"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <defs>
-              <radialGradient id="mapGradient" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" stopColor={BG_GLOW} />
-                <stop offset="100%" stopColor="rgba(255, 107, 74, 0.01)" />
-              </radialGradient>
-            </defs>
+        <div className="relative w-full aspect-[16/9] md:aspect-[2/1]">
+          <Image
+            src="/mongolia-map.svg"
+            alt={t("title")}
+            fill
+            className="object-contain rounded-xl"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
 
-            <rect width="800" height="520" fill="url(#mapGradient)" rx="16" />
+          {BRANCHES.map((branch) => {
+            const { x, y } = project(branch.lon, branch.lat);
+            const isActive = active === branch.key;
 
-            <path
-              d="M80,420 L120,430 L160,440 L210,450 L260,455 L310,450 L360,440 L410,430 L460,420 L510,405 L560,385 L610,360 L650,330 L690,290 L720,250 L740,210 L750,170 L745,130 L730,100 L700,80 L660,70 L620,72 L580,80 L540,95 L500,110 L460,120 L420,125 L380,122 L340,115 L300,110 L260,112 L220,120 L180,135 L140,160 L110,195 L90,235 L75,280 L70,325 L72,370 L80,420 Z"
-              fill="rgba(205, 208, 214, 0.06)"
-              stroke={BORDER}
-              strokeWidth="1.5"
-            />
+            return (
+              <button
+                key={branch.key}
+                type="button"
+                className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                style={{ left: `${x}%`, top: `${y}%` }}
+                onMouseEnter={() => setActive(branch.key)}
+                onMouseLeave={() => setActive(null)}
+                onFocus={() => setActive(branch.key)}
+                onBlur={() => setActive(null)}
+                aria-label={t(branch.key)}
+              >
+                <span className="relative flex h-3 w-3 md:h-4 md:w-4">
+                  <span
+                    className={`absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping ${
+                      isActive ? "opacity-60" : "opacity-25"
+                    }`}
+                  />
+                  <span
+                    className={`relative inline-flex rounded-full bg-primary transition-all duration-200 ${
+                      isActive ? "h-4 w-4 md:h-5 md:w-5" : "h-3 w-3 md:h-4 md:w-4"
+                    }`}
+                  />
+                </span>
 
-            {BRANCHES.map((branch) => {
-              const { x, y } = project(branch.lon, branch.lat, 800, 520);
-              const isActive = active === branch.key;
-              const tooltipX = x > 640 ? -152 : 18;
-              const tooltipY = y > 440 ? -56 : -44;
-
-              return (
-                <g
-                  key={branch.key}
-                  transform={`translate(${x}, ${y})`}
-                  onMouseEnter={() => setActive(branch.key)}
-                  onMouseLeave={() => setActive(null)}
-                  className="cursor-pointer"
-                  style={{ outline: "none" }}
+                <span
+                  className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-2 whitespace-nowrap rounded-lg border border-border bg-background/95 px-3 py-1.5 text-xs font-semibold text-foreground shadow-lg transition-opacity duration-200 pointer-events-none ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
                 >
-                  <circle
-                    r={isActive ? 8 : 6}
-                    fill={PRIMARY}
-                    className="transition-all duration-200"
-                  />
-                  <circle
-                    r={isActive ? 22 : 14}
-                    fill="transparent"
-                    stroke={PRIMARY}
-                    strokeWidth={1.5}
-                    className="origin-center animate-ping"
-                    style={{
-                      opacity: isActive ? 0.5 : 0.25,
-                      animationDuration: "2s",
-                    }}
-                  />
-                  <g
-                    style={{
-                      opacity: isActive ? 1 : 0,
-                      transition: "opacity 200ms ease",
-                      pointerEvents: "none",
-                    }}
-                  >
-                    <rect
-                      x={tooltipX}
-                      y={tooltipY}
-                      width="140"
-                      height="32"
-                      rx="8"
-                      fill="rgba(23, 32, 46, 0.95)"
-                      stroke={BORDER}
-                      strokeWidth="1"
-                    />
-                    <text
-                      x={tooltipX + 70}
-                      y={tooltipY + 21}
-                      textAnchor="middle"
-                      fill="#ffffff"
-                      fontSize="12"
-                      fontWeight="600"
-                    >
-                      {t(branch.key)}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
-          </svg>
+                  {t(branch.key)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
-          <div className="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-64 rounded-xl border border-border bg-background/90 p-4 backdrop-blur-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <MapPin className="h-4 w-4 text-primary" />
-              <span className="text-sm font-semibold">{t("legend")}</span>
-            </div>
-            <p className="text-xs text-muted-foreground">{t("description")}</p>
+        <div className="mt-4 rounded-xl border border-border bg-background/90 p-4 backdrop-blur-sm">
+          <div className="flex items-center gap-2 mb-1">
+            <MapPin className="h-4 w-4 text-primary" />
+            <span className="text-sm font-semibold">{t("legend")}</span>
           </div>
+          <p className="text-xs text-muted-foreground">{t("description")}</p>
         </div>
       </div>
     </div>

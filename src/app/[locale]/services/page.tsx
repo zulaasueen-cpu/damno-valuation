@@ -23,14 +23,15 @@ export async function generateMetadata({
 }
 
 export default function ServicesPage() {
-  const t = useTranslations();
+  const t = useTranslations("services");
+  const root = useTranslations();
   const items = [
-    { title: t("service_0_title"), description: t("service_0_description") },
-    { title: t("service_1_title"), description: t("service_1_description") },
-    { title: t("service_2_title"), description: t("service_2_description") },
-    { title: t("service_3_title"), description: t("service_3_description") },
-    { title: t("service_4_title"), description: t("service_4_description") },
-    { title: t("service_5_title"), description: t("service_5_description") },
+    { title: root("service_0_title"), description: root("service_0_description") },
+    { title: root("service_1_title"), description: root("service_1_description") },
+    { title: root("service_2_title"), description: root("service_2_description") },
+    { title: root("service_3_title"), description: root("service_3_description") },
+    { title: root("service_4_title"), description: root("service_4_description") },
+    { title: root("service_5_title"), description: root("service_5_description") },
   ];
 
   return (
