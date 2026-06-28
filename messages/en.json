@@ -104,6 +104,15 @@
   "footer": {
     "rights": "All rights reserved. Damno Valuation LLC",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "menu": "Menu",
+    "legal": "Legal",
+    "contact": "Contact",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "addressValue": "Ulaanbaatar city, Sukhbaatar district 1st khoroo, Elchingiin street, building 15, 14th floor",
+    "phoneValue": "(976-11)-318784",
+    "emailValue": "d01@damno.mn ; d03@damno.mn"
   }
 }
