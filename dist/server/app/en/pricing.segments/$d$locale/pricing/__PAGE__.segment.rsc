@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[28820,["/_next/static/chunks/0k9hrr.q9..k-.js","/_next/static/chunks/00gm~rc5c0zl1.js","/_next/static/chunks/0s.s0onge660m.js","/_next/static/chunks/0oda3fvql1_nz.js","/_next/static/chunks/11v6k7e~k6tna.js","/_next/static/chunks/0.0nbll0x7z2m.js","/_next/static/chunks/0u35ghe4n2ylj.js"],"FadeIn"]
+3:I[59461,["/_next/static/chunks/0k9hrr.q9..k-.js","/_next/static/chunks/00gm~rc5c0zl1.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen pt-28 pb-20","children":["$","div",null,{"className":"mx-auto max-w-[1200px] px-6 lg:px-8","children":[["$","$L2",null,{"className":"text-center mb-16","children":[["$","span",null,{"className":"text-primary font-semibold tracking-wide","children":"Pricing"}],["$","h1",null,{"className":"mt-4 text-4xl md:text-5xl font-bold","children":"Pricing"}],["$","p",null,{"className":"mt-4 text-muted max-w-2xl mx-auto","children":"Asset valuation service pricing and packages."}]]}],"$undefined"]}]}],[["$","script","script-0",{"src":"/_next/static/chunks/0u35ghe4n2ylj.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Rvt9VUn-Ir9otH_VmLYS0"}
+5:null

@@ -5,6 +5,8 @@ import { OfficeGalleryA } from "@/components/sections/OfficeGalleryA";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Contact } from "@/components/sections/Contact";
 
+export const dynamic = "force-static";
+
 export default function HomePage() {
   return (
     <>

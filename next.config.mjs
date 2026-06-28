@@ -3,6 +3,24 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  output: "export",
+  distDir: ".next",
+  images: {
+    unoptimized: true,
+  },
+  env: {
+    NEXT_PUBLIC_ERXES_ENDPOINT: "https://damno.next.erxes.io/gateway/graphql",
+    NEXT_PUBLIC_ERXES_APP_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRQb3J0YWxJZCI6ImtaMDRwYVlSNmh0dHdKWENHRWVjOCIsImlhdCI6MTc4MjIxNTM5Mn0.LBd4utfh3xzpTFqi1s64jn1loW3W_zIXuBAffgaKrZM",
+    NEXT_PUBLIC_ERXES_CMS_ID: "6a3a75a8407ef915c50979f3",
+    ERXES_APP_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRQb3J0YWxJZCI6ImtaMDRwYVlSNmh0dHdKWENHRWVjOCIsImlhdCI6MTc4MjIxNTM5Mn0.LBd4utfh3xzpTFqi1s64jn1loW3W_zIXuBAffgaKrZM",
+    GRAPHQL_URL: "https://damno.next.erxes.io/gateway/graphql",
+    NEXT_PUBLIC_GRAPHQL_URL: "https://damno.next.erxes.io/gateway/graphql",
+    ERXES_ENDPOINT: "https://damno.next.erxes.io/gateway/graphql",
+    CLIENT_PORTAL_ID: "kZ04paYR6httwJXCGEec8",
+    NEXT_PUBLIC_CLIENT_PORTAL_ID: "kZ04paYR6httwJXCGEec8",
+    ERXES_CMS_ID: "6a3a75a8407ef915c50979f3",
+  },
+};
 
 export default withNextIntl(nextConfig);

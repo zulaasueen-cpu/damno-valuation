@@ -1,0 +1,3 @@
+module.exports=[50789,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(76752);a.n(d("[project]/output/damno-valuation/node_modules/.pnpm/next@16.2.4_@babel+core@7.2_c8206e0b14d95065a91ef00b15159908/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},29749,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(76752);a.n(d("[project]/output/damno-valuation/node_modules/.pnpm/next@16.2.4_@babel+core@7.2_c8206e0b14d95065a91ef00b15159908/node_modules/next/dist/client/components/builtin/global-error.js"))},6609,a=>{"use strict";a.i(50789);var b=a.i(29749);a.n(b)},69160,a=>{a.n(a.i(6609))}];
+
+//# sourceMappingURL=0ch1_next_dist_client_components_builtin_global-error_0elhucm.js.map

@@ -3,6 +3,12 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return [{ locale: "mn" }, { locale: "en" }];
+}
+
 export async function generateMetadata({
   params,
 }: {

@@ -1,4 +1,6 @@
-import { getHeaderMenu } from "@/lib/cms/menus";
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -8,9 +10,19 @@ interface HeaderProps {
   locale: string;
 }
 
-export async function Header({ locale }: HeaderProps) {
-  const items = await getHeaderMenu(locale);
+export function Header({ locale }: HeaderProps) {
+  const t = useTranslations("nav");
   const logo = locale === "mn" ? "/logo-mn.svg" : "/logo-en.svg";
+
+  const items = [
+    { label: t("home"), url: "/" },
+    { label: t("about"), url: "/about" },
+    { label: t("services"), url: "/services" },
+    { label: t("pricing"), url: "/pricing" },
+    { label: t("portfolio"), url: "/portfolio" },
+    { label: t("blog"), url: "/blog" },
+    { label: t("contact"), url: "/contact" },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -22,9 +34,8 @@ export async function Header({ locale }: HeaderProps) {
         <nav className="hidden lg:flex items-center gap-8">
           {items.map((item) => (
             <Link
-              key={item._id}
-              href={item.url ?? "/"}
-              target={item.target ?? undefined}
+              key={item.url}
+              href={item.url}
               className="text-sm font-medium text-white/80 hover:text-white transition-colors"
             >
               {item.label}
@@ -38,11 +49,11 @@ export async function Header({ locale }: HeaderProps) {
             href="/contact"
             className="rounded-full bg-white text-background px-5 py-2.5 text-sm font-semibold hover:scale-[1.02] transition-transform"
           >
-            Захиалах
+            {t("order")}
           </Link>
         </div>
 
-        <MobileMenu items={items} />
+        <MobileMenu />
       </div>
     </header>
   );

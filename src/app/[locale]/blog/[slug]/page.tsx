@@ -3,6 +3,8 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+export const dynamic = "force-static";
+
 const CP_POSTS_QUERY = `
   query CpPosts($language: String, $status: PostStatus, $limit: Int) {
     cpPosts(language: $language, status: $status, limit: $limit) {
@@ -31,21 +33,40 @@ type PostDetail = {
   content?: string;
 };
 
+async function fetchPosts() {
+  try {
+    const results = await Promise.all(
+      routing.locales.map(async (locale) => {
+        const data = await cmsFetch(CP_POSTS_QUERY, {
+          language: locale,
+          status: "published",
+          limit: 100,
+        });
+        return ((data.cpPosts as Array<{ slug?: string }>) ?? []).map((p) => ({
+          locale,
+          slug: p.slug ?? "",
+        }));
+      })
+    );
+    return results.flat().filter((p) => p.slug);
+  } catch (err) {
+    console.error("[blog/[slug]] generateStaticParams failed:", err);
+    return [];
+  }
+}
+
+async function fetchPost(slug: string, locale: string) {
+  try {
+    const data = await cmsFetch(CP_POST_QUERY, { slug, language: locale });
+    return data.cpPost as PostDetail | undefined;
+  } catch (err) {
+    console.error(`[blog/${slug}] CMS fetch failed:`, err);
+    return undefined;
+  }
+}
+
 export async function generateStaticParams() {
-  const results = await Promise.all(
-    routing.locales.map(async (locale) => {
-      const data = await cmsFetch(CP_POSTS_QUERY, {
-        language: locale,
-        status: "published",
-        limit: 100,
-      });
-      return ((data.cpPosts as Array<{ slug?: string }>) ?? []).map((p) => ({
-        locale,
-        slug: p.slug ?? "",
-      }));
-    })
-  );
-  return results.flat().filter((p) => p.slug);
+  return fetchPosts();
 }
 
 export async function generateMetadata({
@@ -54,8 +75,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const data = await cmsFetch(CP_POST_QUERY, { slug, language: locale });
-  const post = data.cpPost as PostDetail | undefined;
+  const post = await fetchPost(slug, locale);
   if (!post) return {};
   return {
     title: `${post.title} | ДАМНО ҮНЭЛГЭЭ`,
@@ -69,8 +89,7 @@ export default async function PostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const data = await cmsFetch(CP_POST_QUERY, { slug, language: locale });
-  const post = data.cpPost as PostDetail | undefined;
+  const post = await fetchPost(slug, locale);
   if (!post) notFound();
 
   return (

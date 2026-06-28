@@ -33,32 +33,18 @@
     "title": "Full-spectrum asset valuation",
     "more": "Learn more"
   },
-  "service": [
-    {
-      "title": "Residential Property Valuation",
-      "description": "Valuation of apartments, houses, land, and buildings in Ulaanbaatar and provincial regions."
-    },
-    {
-      "title": "Movable Assets & Machinery",
-      "description": "Professional valuation of vehicles, mining equipment, industrial lines, and other movable assets."
-    },
-    {
-      "title": "Business & Intangible Assets",
-      "description": "Company valuation, shares, financial instruments, brands, licenses, patents, and intangible assets."
-    },
-    {
-      "title": "Bank Collateral Valuation",
-      "description": "Collateral valuation accepted by Khan Bank, State Bank, Trade and Development Bank, and other lenders."
-    },
-    {
-      "title": "Loss Assessment & Legal Expertise",
-      "description": "Asset loss assessment and expert reports for police, courts, customs, and tax authorities."
-    },
-    {
-      "title": "Land & Real Estate Valuation",
-      "description": "Valuation of land, factories, offices, warehouses, retail spaces, and mining facilities."
-    }
-  ],
+  "service_0_title": "Residential Property Valuation",
+  "service_0_description": "Valuation of apartments, houses, land, and buildings in Ulaanbaatar and provincial regions.",
+  "service_1_title": "Movable Assets & Machinery",
+  "service_1_description": "Professional valuation of vehicles, mining equipment, industrial lines, and other movable assets.",
+  "service_2_title": "Business & Intangible Assets",
+  "service_2_description": "Company valuation, shares, financial instruments, brands, licenses, patents, and intangible assets.",
+  "service_3_title": "Bank Collateral Valuation",
+  "service_3_description": "Collateral valuation accepted by Khan Bank, State Bank, Trade and Development Bank, and other lenders.",
+  "service_4_title": "Loss Assessment & Legal Expertise",
+  "service_4_description": "Asset loss assessment and expert reports for police, courts, customs, and tax authorities.",
+  "service_5_title": "Land & Real Estate Valuation",
+  "service_5_description": "Valuation of land, factories, offices, warehouses, retail spaces, and mining facilities.",
   "portfolio": {
     "label": "Portfolio",
     "title": "Our work",

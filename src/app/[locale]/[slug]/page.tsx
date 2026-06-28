@@ -3,6 +3,9 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 const CP_PAGES_QUERY = `
   query CpPages($language: String) {
     cpPages(language: $language) {
@@ -23,8 +26,6 @@ const CP_PAGES_DETAIL_QUERY = `
     }
   }
 `;
-
-export const dynamicParams = true;
 
 // Reserved slugs that have dedicated static pages
 const RESERVED_SLUGS = new Set([
@@ -53,11 +54,8 @@ export async function generateStaticParams() {
     );
     return results.flat();
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    if (message.includes("Client portal required")) {
-      return [];
-    }
-    throw err;
+    console.error("[cms-page] generateStaticParams failed:", err);
+    return [];
   }
 }
 

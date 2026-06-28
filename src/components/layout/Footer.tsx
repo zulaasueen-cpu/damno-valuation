@@ -1,4 +1,4 @@
-import { getFooterMenu } from "@/lib/cms/menus";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 
@@ -6,8 +6,16 @@ interface FooterProps {
   locale: string;
 }
 
-export async function Footer({ locale }: FooterProps) {
-  const items = await getFooterMenu(locale);
+export function Footer({ locale }: FooterProps) {
+  const t = useTranslations("nav");
+  const menuItems = [
+    { label: t("home"), url: "/" },
+    { label: t("about"), url: "/about" },
+    { label: t("services"), url: "/services" },
+    { label: t("pricing"), url: "/pricing" },
+    { label: t("portfolio"), url: "/portfolio" },
+    { label: t("blog"), url: "/blog" },
+  ];
 
   return (
     <footer className="bg-black text-white">
@@ -22,9 +30,9 @@ export async function Footer({ locale }: FooterProps) {
           <div>
             <h4 className="font-semibold mb-4">{locale === "mn" ? "Цэс" : "Menu"}</h4>
             <ul className="space-y-3">
-              {items.slice(0, 6).map((item) => (
-                <li key={item._id}>
-                  <Link href={item.url ?? "/"} className="text-white/60 hover:text-white transition-colors">
+              {menuItems.map((item) => (
+                <li key={item.url}>
+                  <Link href={item.url} className="text-white/60 hover:text-white transition-colors">
                     {item.label}
                   </Link>
                 </li>

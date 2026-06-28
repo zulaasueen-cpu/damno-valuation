@@ -34,8 +34,8 @@ export function Services() {
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
                     <Icon className="text-primary" size={24} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{t(`service.${i}.title`)}</h3>
-                  <p className="text-muted leading-relaxed mb-5">{t(`service.${i}.description`)}</p>
+                  <h3 className="text-xl font-semibold mb-3">{t(`service_${i}_title`)}</h3>
+                  <p className="text-muted leading-relaxed mb-5">{t(`service_${i}_description`)}</p>
                   <Link
                     href="/services"
                     className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all"

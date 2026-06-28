@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://damno.mn"),
 };
 
+export const dynamic = "force-static";
+
 export function generateStaticParams() {
   return [{ locale: "mn" }, { locale: "en" }];
 }

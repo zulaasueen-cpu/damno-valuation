@@ -3,6 +3,12 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion/FadeI
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return [{ locale: "mn" }, { locale: "en" }];
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -17,14 +23,14 @@ export async function generateMetadata({
 }
 
 export default function ServicesPage() {
-  const t = useTranslations("services");
+  const t = useTranslations();
   const items = [
-    { title: t("service.0.title"), description: t("service.0.description") },
-    { title: t("service.1.title"), description: t("service.1.description") },
-    { title: t("service.2.title"), description: t("service.2.description") },
-    { title: t("service.3.title"), description: t("service.3.description") },
-    { title: t("service.4.title"), description: t("service.4.description") },
-    { title: t("service.5.title"), description: t("service.5.description") },
+    { title: t("service_0_title"), description: t("service_0_description") },
+    { title: t("service_1_title"), description: t("service_1_description") },
+    { title: t("service_2_title"), description: t("service_2_description") },
+    { title: t("service_3_title"), description: t("service_3_description") },
+    { title: t("service_4_title"), description: t("service_4_description") },
+    { title: t("service_5_title"), description: t("service_5_description") },
   ];
 
   return (

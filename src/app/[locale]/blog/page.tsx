@@ -4,6 +4,12 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion/FadeI
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return [{ locale: "mn" }, { locale: "en" }];
+}
+
 const CP_POSTS_QUERY = `
   query CpPosts($language: String, $status: PostStatus, $limit: Int) {
     cpPosts(language: $language, status: $status, limit: $limit) {
@@ -35,18 +41,31 @@ export default async function BlogPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const data = await cmsFetch(CP_POSTS_QUERY, {
-    language: locale,
-    status: "published",
-    limit: 12,
-  });
-  const posts = (data.cpPosts ?? []) as Array<{
+
+  let posts: Array<{
     _id: string;
     slug?: string;
     title?: string;
     excerpt?: string;
     publishedDate?: string;
-  }>;
+  }> = [];
+
+  try {
+    const data = await cmsFetch(CP_POSTS_QUERY, {
+      language: locale,
+      status: "published",
+      limit: 12,
+    });
+    posts = (data.cpPosts ?? []) as Array<{
+      _id: string;
+      slug?: string;
+      title?: string;
+      excerpt?: string;
+      publishedDate?: string;
+    }>;
+  } catch (err) {
+    console.error("[blog] CMS fetch failed:", err);
+  }
 
   return (
     <div className="min-h-screen pt-28 pb-20">
