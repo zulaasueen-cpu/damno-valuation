@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[59461,["/_next/static/chunks/0k9hrr.q9..k-.js","/_next/static/chunks/00gm~rc5c0zl1.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"min-h-screen pt-28 pb-20","children":["$","div",null,{"className":"mx-auto max-w-[800px] px-6 lg:px-8","children":[["$","header",null,{"className":"mb-10","children":[["$","h1",null,{"className":"text-3xl md:text-4xl lg:text-5xl font-bold mb-4","children":"Vehicle and Machinery Valuation"}],["$","time",null,{"className":"text-muted","children":"6/25/2026"}]]}],["$","div",null,{"className":"prose prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"<p>Movable asset valuation considers technical condition, age, mileage, market supply and demand, and service history.</p><p>Damno Valuation values automobiles, heavy machinery, mining equipment, and industrial tools under YOVC-210 standards.</p>"}}]]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"9C65xzfErGnK_j7UHzzJd"}
+4:null
