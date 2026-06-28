@@ -36,23 +36,37 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
-  const pages = (data.cpPages ?? []) as Array<{
-    _id: string;
-    name?: string;
-    slug?: string;
-    description?: string;
-    content?: string;
-  }>;
-  const page = pages.find((p) => p.slug === "contact");
+  const t = await getTranslations({ locale, namespace: "contact" });
+
+  let page:
+    | { name?: string; slug?: string; description?: string; content?: string }
+    | undefined;
+
+  try {
+    const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
+    const pages = (data.cpPages ?? []) as Array<{
+      _id: string;
+      name?: string;
+      slug?: string;
+      description?: string;
+      content?: string;
+    }>;
+    page = pages.find((p) => p.slug === "contact");
+  } catch (err) {
+    console.error("[contact] CMS fetch failed:", err);
+  }
 
   return (
     <div className="min-h-screen pt-28 pb-20">
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{page?.name ?? "Холбоо барих"}</h1>
-          {page?.description && (
-            <p className="text-xl text-muted max-w-2xl mx-auto">{page.description}</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            {page?.name ?? t("label")}
+          </h1>
+          {(page?.description || t("description")) && (
+            <p className="text-xl text-muted max-w-2xl mx-auto">
+              {page?.description || t("description")}
+            </p>
           )}
         </FadeIn>
 

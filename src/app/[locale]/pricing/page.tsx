@@ -34,24 +34,36 @@ export default async function PricingPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
-  const pages = (data.cpPages ?? []) as Array<{
-    _id: string;
-    name?: string;
-    slug?: string;
-    description?: string;
-    content?: string;
-  }>;
-  const page = pages.find((p) => p.slug === "pricing");
+  const t = await getTranslations({ locale, namespace: "pricing" });
+
+  let page:
+    | { name?: string; slug?: string; description?: string; content?: string }
+    | undefined;
+
+  try {
+    const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
+    const pages = (data.cpPages ?? []) as Array<{
+      _id: string;
+      name?: string;
+      slug?: string;
+      description?: string;
+      content?: string;
+    }>;
+    page = pages.find((p) => p.slug === "pricing");
+  } catch (err) {
+    console.error("[pricing] CMS fetch failed:", err);
+  }
 
   return (
     <div className="min-h-screen pt-28 pb-20">
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <FadeIn className="text-center mb-16">
-          <span className="text-primary font-semibold tracking-wide">{page?.name ?? "Үнийн санал"}</span>
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold">{page?.name ?? "Үнийн санал"}</h1>
-          {page?.description && (
-            <p className="mt-4 text-muted max-w-2xl mx-auto">{page.description}</p>
+          <span className="text-primary font-semibold tracking-wide">{page?.name ?? t("label")}</span>
+          <h1 className="mt-4 text-4xl md:text-5xl font-bold">{page?.name ?? t("label")}</h1>
+          {(page?.description || t("description")) && (
+            <p className="mt-4 text-muted max-w-2xl mx-auto">
+              {page?.description || t("description")}
+            </p>
           )}
         </FadeIn>
 

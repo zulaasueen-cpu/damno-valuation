@@ -62,15 +62,20 @@ export async function generateStaticParams() {
 }
 
 async function fetchPage(slug: string, locale: string) {
-  const data = await cmsFetch(CP_PAGES_DETAIL_QUERY, { language: locale });
-  const pages = (data.cpPages ?? []) as Array<{
-    _id: string;
-    name?: string;
-    slug?: string;
-    description?: string;
-    content?: string;
-  }>;
-  return pages.find((p) => p.slug === slug);
+  try {
+    const data = await cmsFetch(CP_PAGES_DETAIL_QUERY, { language: locale });
+    const pages = (data.cpPages ?? []) as Array<{
+      _id: string;
+      name?: string;
+      slug?: string;
+      description?: string;
+      content?: string;
+    }>;
+    return pages.find((p) => p.slug === slug);
+  } catch (err) {
+    console.error(`[cms-page/${slug}] CMS fetch failed:`, err);
+    return undefined;
+  }
 }
 
 export async function generateMetadata({

@@ -1,12 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { MapPin } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const PRIMARY = "#ff6b4a";
-const MUTED = "#cdd0d6";
 const BORDER = "rgba(255, 107, 74, 0.35)";
 const BG_GLOW = "rgba(255, 107, 74, 0.1)";
 
@@ -40,6 +38,22 @@ function project(lon: number, lat: number, width: number, height: number) {
 export function BranchMap() {
   const t = useTranslations("branches");
   const [active, setActive] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="w-full">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6">{t("title")}</h2>
+        <div className="rounded-2xl border border-border bg-card/50 p-4 md:p-6 overflow-hidden">
+          <div className="relative w-full aspect-[4/3] md:aspect-[16/10] animate-pulse bg-card/80" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
@@ -56,13 +70,6 @@ export function BranchMap() {
                 <stop offset="0%" stopColor={BG_GLOW} />
                 <stop offset="100%" stopColor="rgba(255, 107, 74, 0.01)" />
               </radialGradient>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
             </defs>
 
             <rect width="800" height="520" fill="url(#mapGradient)" rx="16" />
@@ -74,7 +81,7 @@ export function BranchMap() {
               strokeWidth="1.5"
             />
 
-            {BRANCHES.map((branch, index) => {
+            {BRANCHES.map((branch) => {
               const { x, y } = project(branch.lon, branch.lat, 800, 520);
               const isActive = active === branch.key;
               const tooltipX = x > 640 ? -152 : 18;
@@ -86,31 +93,31 @@ export function BranchMap() {
                   transform={`translate(${x}, ${y})`}
                   onMouseEnter={() => setActive(branch.key)}
                   onMouseLeave={() => setActive(null)}
-                  onFocus={() => setActive(branch.key)}
-                  onBlur={() => setActive(null)}
                   className="cursor-pointer"
-                  tabIndex={0}
+                  style={{ outline: "none" }}
                 >
-                  <motion.circle
+                  <circle
                     r={isActive ? 8 : 6}
                     fill={PRIMARY}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: index * 0.05, type: "spring", stiffness: 300, damping: 20 }}
-                    filter={isActive ? "url(#glow)" : undefined}
+                    className="transition-all duration-200"
                   />
-                  <motion.circle
+                  <circle
                     r={isActive ? 22 : 14}
                     fill="transparent"
                     stroke={PRIMARY}
                     strokeWidth={1.5}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: isActive ? 0.5 : 0.25 }}
-                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    className="origin-center animate-ping"
+                    style={{
+                      opacity: isActive ? 0.5 : 0.25,
+                      animationDuration: "2s",
+                    }}
                   />
                   <g
-                    className="transition-opacity duration-200"
-                    style={{ opacity: isActive ? 1 : 0 }}
+                    style={{
+                      opacity: isActive ? 1 : 0,
+                      transition: "opacity 200ms ease",
+                      pointerEvents: "none",
+                    }}
                   >
                     <rect
                       x={tooltipX}

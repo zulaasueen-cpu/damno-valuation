@@ -26,7 +26,7 @@ export async function cmsFetch(query: string, variables?: Record<string, unknown
       ...(clientPortalId ? { "x-client-portal-id": clientPortalId } : {}),
     },
     body: JSON.stringify({ query, variables }),
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
 
   if (!res.ok) {
