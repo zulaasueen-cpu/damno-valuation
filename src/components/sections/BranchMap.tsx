@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { MapPin } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const PRIMARY = "#ff6b4a";
 const BORDER = "rgba(255, 107, 74, 0.35)";
@@ -38,22 +38,6 @@ function project(lon: number, lat: number, width: number, height: number) {
 export function BranchMap() {
   const t = useTranslations("branches");
   const [active, setActive] = useState<string | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div className="w-full">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6">{t("title")}</h2>
-        <div className="rounded-2xl border border-border bg-card/50 p-4 md:p-6 overflow-hidden">
-          <div className="relative w-full aspect-[4/3] md:aspect-[16/10] animate-pulse bg-card/80" />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full">
