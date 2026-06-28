@@ -82,6 +82,22 @@
     "title": "Our office",
     "description": "Take a look at Damno Valuation's working environment, team, and documentation standards."
   },
+  "branches": {
+    "title": "Our Branches",
+    "legend": "Branch locations",
+    "description": "Representatives in Ulaanbaatar and more than 10 provinces and soums.",
+    "ulaanbaatar": "Ulaanbaatar (6 districts)",
+    "chinggis": "Khentii, Chinggis city",
+    "choibalsan": "Dornod, Choibalsan city",
+    "khanbogd": "Ömnögovi, Khanbogd soum",
+    "zamynuud": "Dornogovi, Zamyn-Üüd soum",
+    "kharkhorin": "Övörkhangai, Kharkhorin soum",
+    "tsenher": "Arkhangai province",
+    "khovd": "Khovd province",
+    "olgii": "Bayan-Ölgii province",
+    "darkhan": "Darkhan-Uul, Darkhan soum",
+    "moron": "Khövsgöl, Mörön soum"
+  },
   "contact": {
     "label": "Contact",
     "title": "Need a valuation consultation?",

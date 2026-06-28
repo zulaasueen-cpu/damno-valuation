@@ -1,5 +1,6 @@
 import { cmsFetch } from "@/lib/cms/fetch";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { BranchMap } from "@/components/sections/BranchMap";
 import { FadeIn } from "@/components/motion/FadeIn";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -61,6 +62,10 @@ export default async function ContactPage({
             />
           </FadeIn>
         )}
+
+        <FadeIn className="mb-12">
+          <BranchMap />
+        </FadeIn>
 
         <FadeIn>
           <div className="rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-8 md:p-12">
