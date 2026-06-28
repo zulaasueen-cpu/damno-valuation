@@ -1,21 +1,8 @@
-import { cmsFetch } from "@/lib/cms/fetch";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { BranchMap } from "@/components/sections/BranchMap";
 import { FadeIn } from "@/components/motion/FadeIn";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-
-const CP_PAGES_QUERY = `
-  query CpPages($language: String) {
-    cpPages(language: $language) {
-      _id
-      name
-      slug
-      description
-      content
-    }
-  }
-`;
 
 export async function generateMetadata({
   params,
@@ -38,46 +25,13 @@ export default async function ContactPage({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
 
-  let page:
-    | { name?: string; slug?: string; description?: string; content?: string }
-    | undefined;
-
-  try {
-    const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
-    const pages = (data.cpPages ?? []) as Array<{
-      _id: string;
-      name?: string;
-      slug?: string;
-      description?: string;
-      content?: string;
-    }>;
-    page = pages.find((p) => p.slug === "contact");
-  } catch (err) {
-    console.error("[contact] CMS fetch failed:", err);
-  }
-
   return (
     <div className="min-h-screen pt-28 pb-20">
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {page?.name ?? t("label")}
-          </h1>
-          {(page?.description || t("description")) && (
-            <p className="text-xl text-muted max-w-2xl mx-auto">
-              {page?.description || t("description")}
-            </p>
-          )}
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("label")}</h1>
+          <p className="text-xl text-muted max-w-2xl mx-auto">{t("description")}</p>
         </FadeIn>
-
-        {page?.content && (
-          <FadeIn className="mb-12">
-            <div
-              className="prose prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: page.content }}
-            />
-          </FadeIn>
-        )}
 
         <FadeIn className="mb-12">
           <BranchMap />
