@@ -12,9 +12,9 @@ const CP_PAGES_QUERY = `
   }
 `;
 
-const CP_PAGE_DETAIL_QUERY = `
-  query CpPageDetail($slug: String!, $language: String) {
-    cpPageDetail(slug: $slug, language: $language) {
+const CP_PAGES_DETAIL_QUERY = `
+  query CpPages($language: String) {
+    cpPages(language: $language) {
       _id
       name
       slug
@@ -61,6 +61,18 @@ export async function generateStaticParams() {
   }
 }
 
+async function fetchPage(slug: string, locale: string) {
+  const data = await cmsFetch(CP_PAGES_DETAIL_QUERY, { language: locale });
+  const pages = (data.cpPages ?? []) as Array<{
+    _id: string;
+    name?: string;
+    slug?: string;
+    description?: string;
+    content?: string;
+  }>;
+  return pages.find((p) => p.slug === slug);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -72,13 +84,7 @@ export async function generateMetadata({
     notFound();
   }
 
-  const data = await cmsFetch(CP_PAGE_DETAIL_QUERY, {
-    slug,
-    language: locale,
-  });
-  const page = data.cpPageDetail as
-    | { name?: string; description?: string }
-    | undefined;
+  const page = await fetchPage(slug, locale);
   if (!page) return {};
   return {
     title: `${page.name} | ДАМНО ҮНЭЛГЭЭ`,
@@ -97,13 +103,7 @@ export default async function CmsPage({
     notFound();
   }
 
-  const data = await cmsFetch(CP_PAGE_DETAIL_QUERY, {
-    slug,
-    language: locale,
-  });
-  const page = data.cpPageDetail as
-    | { name?: string; description?: string; content?: string }
-    | undefined;
+  const page = await fetchPage(slug, locale);
   if (!page) notFound();
 
   return (

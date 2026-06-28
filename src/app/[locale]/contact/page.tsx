@@ -5,9 +5,9 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-const CP_PAGE_DETAIL_QUERY = `
-  query CpPageDetail($slug: String!, $language: String) {
-    cpPageDetail(slug: $slug, language: $language) {
+const CP_PAGES_QUERY = `
+  query CpPages($language: String) {
+    cpPages(language: $language) {
       _id
       name
       slug
@@ -36,13 +36,15 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const data = await cmsFetch(CP_PAGE_DETAIL_QUERY, {
-    slug: "contact",
-    language: locale,
-  });
-  const page = data.cpPageDetail as
-    | { name?: string; description?: string; content?: string }
-    | undefined;
+  const data = await cmsFetch(CP_PAGES_QUERY, { language: locale });
+  const pages = (data.cpPages ?? []) as Array<{
+    _id: string;
+    name?: string;
+    slug?: string;
+    description?: string;
+    content?: string;
+  }>;
+  const page = pages.find((p) => p.slug === "contact");
 
   return (
     <div className="min-h-screen pt-28 pb-20">
